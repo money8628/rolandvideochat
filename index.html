@@ -350,10 +350,32 @@ let searching = false;
 
 const rtcConfig = {
   iceServers: [
-    { urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] }
-    // For production reliability across strict NATs/firewalls, add a TURN
-    // server here too, e.g.:
-    // { urls: 'turn:your.turn.server:3478', username: '...', credential: '...' }
+    { urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] },
+    // TURN relay — required for pairs where at least one side is behind a
+    // symmetric NAT, CGNAT (common on mobile carriers), or a restrictive
+    // corporate/school firewall. STUN alone cannot establish a direct path
+    // for those networks, so without a TURN fallback those specific pairs
+    // silently fail to connect (each side's local video works, but the
+    // remote video never arrives) while other, more STUN-friendly pairs
+    // connect fine. This is the free/rate-limited Open Relay Project TURN
+    // service — good enough to fix that failure mode immediately. For
+    // heavier real-world traffic, swap in your own TURN credentials
+    // (e.g. from Twilio, Xirsys, Cloudflare, or a self-hosted coturn).
+    {
+      urls: 'turn:openrelay.metered.ca:80',
+      username: 'openrelayproject',
+      credential: 'openrelayproject'
+    },
+    {
+      urls: 'turn:openrelay.metered.ca:443',
+      username: 'openrelayproject',
+      credential: 'openrelayproject'
+    },
+    {
+      urls: 'turn:openrelay.metered.ca:443?transport=tcp',
+      username: 'openrelayproject',
+      credential: 'openrelayproject'
+    }
   ]
 };
 
@@ -571,6 +593,37 @@ function startCall(){
 
   pc.onicecandidate = e => {
     if (e.candidate) myCandidatesRef.push(e.candidate.toJSON());
+  };
+
+  // If the two peers simply can't establish a path (blocked network, TURN
+  // relay overloaded, etc.), WebRTC reports that via connection state
+  // rather than an exception — nothing throws, the screen just stays on
+  // "Connecting…" forever with no video. Watch for that explicitly so a
+  // failed pairing recovers on its own instead of leaving both people stuck.
+  let connectFailed = false;
+  function handleConnectFailure(){
+    if (connectFailed) return; // avoid double-triggering from both event handlers
+    connectFailed = true;
+    setStatus('Connection failed', false);
+    appendSystemMessage("Couldn't connect to that stranger — finding someone new…");
+    if (searching){ stopWaiting(); }
+    teardownCall(true);
+    showPlaceholder('Reconnecting you with someone new…');
+    setTimeout(findPartner, 500);
+  }
+  pc.oniceconnectionstatechange = () => {
+    if (pc && (pc.iceConnectionState === 'failed' || pc.iceConnectionState === 'disconnected')){
+      handleConnectFailure();
+    }
+  };
+  // Backstop: if we never even reach "connected" within 15s of starting
+  // (e.g. ICE gathering itself stalls rather than reporting "failed"),
+  // treat it the same way rather than waiting indefinitely.
+  const connectTimeout = setTimeout(() => {
+    if (pc && pc.connectionState !== 'connected') handleConnectFailure();
+  }, 15000);
+  pc.onconnectionstatechange = () => {
+    if (pc && pc.connectionState === 'connected') clearTimeout(connectTimeout);
   };
 
   // Detect the other side leaving (graceful or a dropped connection): the
