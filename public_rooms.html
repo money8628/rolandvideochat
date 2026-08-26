@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Public rooms — rolandvideochat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+</head>
+<body>
+<main class="public-directory">
+  <header class="directory-header">
+    <a class="brand" href="index.html"><span class="mark"></span>rolandvideochat</a>
+    <a class="pill-btn" href="index.html" style="text-decoration:none;">Create or join</a>
+  </header>
+
+  <section class="directory-intro">
+    <p class="eyebrow">COMMUNITY ROOMS</p>
+    <h1>Find a public room.</h1>
+    <p>Browse rooms that are currently open. Search descriptions to find the right conversation.</p>
+    <input id="roomSearch" class="directory-search" type="search" placeholder="Search room descriptions..." autocomplete="off" />
+  </section>
+
+  <section id="roomList" class="room-list" aria-live="polite">
+    <p class="directory-status">Loading public rooms...</p>
+  </section>
+</main>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDKtOdU4PmUQE8_vwaz6k_w_BjRe466dyg",
+  authDomain: "data-b61c7.firebaseapp.com",
+  databaseURL: "https://data-b61c7-default-rtdb.firebaseio.com",
+  projectId: "data-b61c7",
+  storageBucket: "data-b61c7.firebasestorage.app",
+  messagingSenderId: "570416012500",
+  appId: "1:570416012500:web:66921eb421f776b01d2f41",
+  measurementId: "G-XN0PPCPW42"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const roomSearch = document.getElementById('roomSearch');
+const roomList = document.getElementById('roomList');
+let publicRooms = [];
+
+function renderRooms() {
+  const query = roomSearch.value.trim().toLowerCase();
+  const matches = publicRooms.filter(room => room.description.toLowerCase().includes(query));
+  roomList.innerHTML = '';
+
+  if (!matches.length) {
+    const empty = document.createElement('p');
+    empty.className = 'directory-status';
+    empty.textContent = query ? 'No public rooms match that description.' : 'No public rooms are available right now.';
+    roomList.appendChild(empty);
+    return;
+  }
+
+  matches.forEach(room => {
+    const card = document.createElement('article');
+    card.className = 'public-room-card';
+
+    const content = document.createElement('div');
+    content.className = 'public-room-content';
+    const description = document.createElement('h2');
+    description.textContent = room.description || 'Public video room';
+    const count = document.createElement('p');
+    count.className = 'room-occupancy';
+    count.textContent = room.count + '/4 people inside';
+    content.append(description, count);
+
+    const actions = document.createElement('div');
+    actions.className = 'public-room-actions';
+    const code = document.createElement('code');
+    code.textContent = room.code;
+    const copy = document.createElement('button');
+    copy.className = 'room-action';
+    copy.type = 'button';
+    copy.textContent = 'Copy code';
+    copy.onclick = () => navigator.clipboard.writeText(room.code).then(() => {
+      copy.textContent = 'Copied';
+      setTimeout(() => { copy.textContent = 'Copy code'; }, 1200);
+    });
+    const join = document.createElement('a');
+    join.className = 'pill-btn primary';
+    join.href = 'index.html?room=' + encodeURIComponent(room.code);
+    join.textContent = 'Join';
+    actions.append(code, copy, join);
+    card.append(content, actions);
+    roomList.appendChild(card);
+  });
+}
+
+function watchRooms(snapshot) {
+  publicRooms = [];
+  snapshot.forEach(roomSnapshot => {
+    const room = roomSnapshot.val() || {};
+    const meta = room.meta || {};
+    const count = room.participants ? Object.keys(room.participants).length : 0;
+    if (meta.visibility === 'public' && count > 0 && count < 4) {
+      publicRooms.push({ code: roomSnapshot.key, description: String(meta.description || ''), count });
+    }
+  });
+  publicRooms.sort((a, b) => a.code.localeCompare(b.code));
+  renderRooms();
+}
+
+roomSearch.addEventListener('input', renderRooms);
+db.ref('rooms').on('value', watchRooms, error => {
+  console.error('Public room directory failed to read rooms:', error);
+  roomList.innerHTML = '<p class="directory-status">Public rooms cannot be loaded. Check that your Firebase rules allow read access to /rooms.</p>';
+});
+</script>
+</body>
+</html>
