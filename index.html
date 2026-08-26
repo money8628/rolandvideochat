@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>rolandvideochat — private video chat</title>
+<title>rolandvideochat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -24,12 +24,16 @@
   <div id="landing">
     <div class="top-row">
       <div class="brand"><span class="mark"></span>rolandvideochat</div>
-      <div class="online-chip"><i></i><span id="onlineCountLanding">—</span> online now</div>
+      <div class="top-actions">
+        <a class="directory-link" href="public_rooms.html">Public rooms</a>
+        <div class="online-chip"><i></i><span id="onlineCountLanding">—</span> online now</div>
+      </div>
     </div>
 
     <div class="hero-copy">
-      <h1>Private video chat, <span>up to 4 people.</span></h1>
+      <h1>video chat <span>up to 4 people.</span></h1>
       <p>Create a room and share the code, or join one you've been invited to. No account needed.</p>
+      <p>You can choose to have a private room or a public one</p>
     </div>
 
     <div class="auth-card">
@@ -41,6 +45,19 @@
       <div class="tab-body">
         <div class="tab-panel active" id="panelCreate">
           <p class="tab-intro">Start a room and get a code you can send to up to three other people.</p>
+          <label class="room-visibility">
+            <span>
+              <strong>Public room</strong>
+              <small>List this room in the public room directory.</small>
+            </span>
+            <input id="publicRoomToggle" type="checkbox" />
+            <span class="toggle-track" aria-hidden="true"></span>
+          </label>
+          <div class="public-room-fields" id="publicRoomFields">
+            <label class="field-label" for="roomDescription">Room description</label>
+            <textarea id="roomDescription" maxlength="160" placeholder="What is this room about?"></textarea>
+            <div class="field-hint">Use a few words so people can find your room.</div>
+          </div>
           <button id="createBtn" class="pill-btn primary block">Create room</button>
           <div class="form-error" id="createError"></div>
         </div>
