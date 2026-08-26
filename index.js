@@ -6,9 +6,9 @@
 /* =========================================================================
    FIREBASE SETUP
    -------------------------------------------------------------------------
-   1. Go to https://console.firebase.google.com → create a project.
+   1. Go to https://console.firebase.google.com â†’ create a project.
    2. Build > Realtime Database > Create database.
-   3. Project settings > General > Your apps > Web app → copy the config
+   3. Project settings > General > Your apps > Web app â†’ copy the config
       object and paste it in place of the one below.
    4. Paste the security rules provided alongside this app into the
       Rules tab of your Realtime Database.
@@ -49,7 +49,7 @@ const tileEls = {};      // id -> { wrap, video, tag }
 const rtcConfig = {
   iceServers: [
     { urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] },
-    // TURN relay — needed when a participant is behind a symmetric NAT,
+    // TURN relay â€” needed when a participant is behind a symmetric NAT,
     // CGNAT (common on mobile carriers), or a restrictive firewall, since
     // STUN alone can't establish a path for those. Free/rate-limited Open
     // Relay Project service; swap in your own TURN credentials (Twilio,
@@ -109,7 +109,7 @@ myOnlineRef.onDisconnect().remove();
 onlineRef.on('value', snap => { onlineCountLanding.textContent = snap.numChildren(); });
 
 /* =========================================================================
-   LANDING — tabs
+   LANDING â€” tabs
    ========================================================================= */
 tabCreate.onclick = () => { tabCreate.classList.add('active'); tabJoin.classList.remove('active'); panelCreate.classList.add('active'); panelJoin.classList.remove('active'); };
 tabJoin.onclick = () => { tabJoin.classList.add('active'); tabCreate.classList.remove('active'); panelJoin.classList.add('active'); panelCreate.classList.remove('active'); };
@@ -152,7 +152,7 @@ async function ensureMedia(){
 createBtn.onclick = async () => {
   clearError(createError);
   createBtn.disabled = true;
-  camNote.textContent = 'Requesting camera & microphone…';
+  camNote.textContent = 'Requesting camera & microphone';
   try{
     await ensureMedia();
     const code = await generateUniqueCode();
@@ -174,7 +174,7 @@ joinBtn.onclick = async () => {
   const code = joinCodeInput.value.trim().toUpperCase();
   if (code.length !== 6){ showError(joinError, 'Enter the 6-character room code.'); return; }
   joinBtn.disabled = true;
-  camNote.textContent = 'Requesting camera & microphone…';
+  camNote.textContent = 'Requesting camera & microphone';
   try{
     const metaSnap = await db.ref('rooms/' + code + '/meta').once('value');
     if (!metaSnap.exists()){ showError(joinError, "That room code doesn't exist."); return; }
@@ -210,7 +210,7 @@ async function enterRoom(code){
   chatMessages.innerHTML = '';
   tileGrid.innerHTML = '';
   Object.keys(tileEls).forEach(k => delete tileEls[k]);
-  setStatus('Waiting for others to join…', false);
+  setStatus('Waiting for others to join', false);
 
   addTile(myId, 'You', true, localStream);
 
@@ -262,7 +262,7 @@ async function enterRoom(code){
 
 /* Room auto-close: whenever I am the only person left in the room, arm a
    deletion of the WHOLE room (meta, participants, pairs, messages) that
-   fires automatically if my connection drops without a clean "Leave" —
+   fires automatically if my connection drops without a clean "Leave" â€”
    e.g. the tab crashes or the network dies. As soon as anyone else joins,
    the arm is cancelled so their presence doesn't get wiped out by my
    disconnect. Whichever participant is currently alone always holds this
@@ -277,9 +277,9 @@ function updateAloneGuard(){
 function updateParticipantCount(){
   const n = Object.keys(participants).length + 1;
   participantCount.textContent = n;
-  setStatus(n > 1 ? 'Connected' : 'Waiting for others to join…', n > 1);
+  setStatus(n > 1 ? 'Connected' : 'Waiting for others to join', n > 1);
   waitingBanner.style.display = n >= 2 ? 'none' : 'flex';
-  waitingBannerText.textContent = 'Share the room code "' + roomCode + '" — waiting for others…';
+  waitingBannerText.textContent = 'Share the room code "' + roomCode + ' waiting for others';
 }
 function setStatus(text, live){
   statusLabel.textContent = text;
@@ -301,7 +301,7 @@ function addTile(id, label, isLocal, stream){
 
   const tag = document.createElement('div');
   tag.className = 'tile-label';
-  tag.innerHTML = '<span class="name">' + label + '</span><span class="mic-off">🔇</span>';
+  tag.innerHTML = '<span class="name">' + label + '</span><span class="mic-off">&#128263;</span>';
 
   wrap.appendChild(video);
   wrap.appendChild(tag);
@@ -323,7 +323,7 @@ function relayoutGrid(){
 function shortLabel(id){ return id === myId ? 'You' : ('Guest-' + id.slice(0, 4)); }
 
 /* =========================================================================
-   WEBRTC — one RTCPeerConnection per remote participant (full mesh)
+   WEBRTC â€” one RTCPeerConnection per remote participant (full mesh)
    -------------------------------------------------------------------------
    pairKey is the two participant ids sorted and joined, so both sides
    compute the same database path independently. Whichever side already
@@ -477,7 +477,7 @@ function leaveRoom(){
   if (messagesRef) messagesRef.off();
   if (localStream){ localStream.getTracks().forEach(t => t.stop()); localStream = null; }
 
-  // I was the last one in the room — close it out entirely so no empty
+  // I was the last one in the room â€” close it out entirely so no empty
   // room data lingers in the database.
   if (wasAlone && roomRef){
     roomRef.onDisconnect().cancel();
