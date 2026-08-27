@@ -165,7 +165,7 @@ h1, .brand { font-family: 'Sora', 'Inter', Arial, sans-serif; }
   .chat-header .status-text { order: 3; width: 100%; }
   .chat-header .right { margin-left: auto; }
   .room-chip { order: 4; width: 100%; justify-content: center; }
-  .chat-panel { position: absolute; inset: 0 0 0 auto; width: min(100%, 340px); flex-basis: auto; box-shadow: -8px 0 20px rgba(23, 32, 42, .12); }
+  .chat-panel { position: absolute; inset: 0 0 0 auto; z-index: 4; width: min(100%, 340px); flex-basis: auto; box-shadow: -8px 0 20px rgba(23, 32, 42, .12); }
   .chat-panel.collapsed { margin-right: -100%; }
   .video-area { padding: 8px; }
   .tile-grid.n2, .tile-grid.n3, .tile-grid.n4 { grid-template-columns: 1fr; grid-template-rows: repeat(auto-fit, minmax(0, 1fr)); }
