@@ -236,7 +236,8 @@ async function enterRoom(code){
   previewsRef = roomRef.child('previews');
 
   roomRef.on('value', snap => {
-    if (!snap.exists() && roomCode && !leavingRoom) leaveRoom();
+    const room = snap.val();
+    if ((!snap.exists() || (room.meta && room.meta.closed)) && roomCode && !leavingRoom) leaveRoom();
   });
 
   landing.style.display = 'none';
