@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="rolandvideochat.ico" />
 <title>Admin console - rolandvideochat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -29,7 +31,7 @@
 <body>
 <section id="authGate" class="auth-gate"><form id="loginForm" class="auth-card"><h1>Admin access.</h1><p>Sign in with your email and password to continue.</p><div class="auth-fields"><label class="auth-label" for="loginEmail">Email</label><input id="loginEmail" class="auth-input" type="email" autocomplete="username" required><label class="auth-label" for="loginPassword">Password</label><input id="loginPassword" class="auth-input" type="password" autocomplete="current-password" required></div><button id="loginButton" class="auth-button" type="submit">Sign in</button><p id="loginError" class="auth-error" role="alert"></p></form></section>
 <main id="adminShell" class="admin-shell" hidden>
-  <header class="header"><a class="brand" href="index.html"><span class="mark"></span>rolandvideochat</a><div class="header-right"><span class="live-dot"></span><span>Live data</span><a class="back" href="index.html">Back to app</a><button id="logoutButton" class="logout-button" type="button">Log out</button></div></header>
+  <header class="header"><a class="brand" href="index.html"><span class="mark"></span><object data="rolandvideochat.png" type="image/png" height="80"></object></a><div class="header-right"><span class="live-dot"></span><span>Live data</span><a class="back" href="index.html">Back to app</a><button id="logoutButton" class="logout-button" type="button">Log out</button></div></header>
   <p class="kicker">MODERATION CONSOLE</p>
   <div class="title-row"><h1>Room control.</h1><p>Inspect active rooms, review reports, and preview a live room without appearing in its participant list.</p></div>
   <section class="metrics" aria-label="Overview"><div class="metric"><div class="metric-label">Active rooms</div><div id="roomCount" class="metric-value">0</div></div><div class="metric"><div class="metric-label">People online</div><div id="peopleCount" class="metric-value">0</div></div><div class="metric"><div class="metric-label">Reports</div><div id="reportCount" class="metric-value">0</div></div></section>
