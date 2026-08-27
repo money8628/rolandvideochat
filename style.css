@@ -119,7 +119,7 @@ h1, .brand { font-family: 'Sora', 'Inter', Arial, sans-serif; }
 .tile-grid.n3, .tile-grid.n4 { grid-template-rows: repeat(2, 1fr); }
 .tile-grid.n3 .tile:first-child { grid-column: 1 / span 2; }
 .tile { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-width: 0; min-height: 0; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: #000; }
-.tile video { display: block; width: 100%; height: 100%; background: #000; object-fit: cover; }
+.tile video { display: block; width: 100%; height: 100%; background: #000; object-fit: contain; }
 .tile.local video { transform: scaleX(-1); }
 .tile .tile-label { position: absolute; bottom: 8px; left: 8px; display: flex; align-items: center; gap: 6px; max-width: calc(100% - 16px); border: 1px solid var(--accent-hover); border-radius: 4px; padding: 5px 8px; background: rgba(38, 12, 16, .92); color: var(--text); font-size: 12px; font-weight: 700; }
 .tile .tile-label .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
