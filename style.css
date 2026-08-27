@@ -96,6 +96,10 @@ h1, .brand { font-family: 'Sora', 'Inter', Arial, sans-serif; }
 .form-error { display: none; color: var(--danger); font-size: 13px; }
 .form-error.show { display: block; }
 .cam-note, .copyright-note { text-align: center; }
+.copyright-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px; width: 100%; }
+.footer-links { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.footer-links a { color: var(--muted); text-decoration: none; }
+.footer-links a:hover { color: var(--accent-hover); text-decoration: underline; }
 .guidelines { width: 100%; max-width: 560px; border-top: 1px solid var(--border); padding-top: 14px; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
 .guidelines b { color: var(--text); }
 
