@@ -33,6 +33,7 @@ let participantsRef = null;
 let pairsRef = null;
 let messagesRef = null;
 let previewsRef = null;
+let leavingRoom = false;
 let micOn = true, camOn = true;
 let joinedAt = 0;
 
@@ -226,12 +227,17 @@ joinBtn.onclick = async () => {
    ========================================================================= */
 async function enterRoom(code){
   roomCode = code;
+  leavingRoom = false;
   joinedAt = Date.now();
   roomRef = db.ref('rooms/' + code);
   participantsRef = roomRef.child('participants');
   pairsRef = roomRef.child('pairs');
   messagesRef = roomRef.child('messages');
   previewsRef = roomRef.child('previews');
+
+  roomRef.on('value', snap => {
+    if (!snap.exists() && roomCode && !leavingRoom) leaveRoom();
+  });
 
   landing.style.display = 'none';
   meetingScreen.style.display = 'flex';
@@ -569,6 +575,8 @@ reportBtn.onclick = () => {
 };
 
 function leaveRoom(){
+  if (leavingRoom) return;
+  leavingRoom = true;
   const wasAlone = Object.keys(participants).length === 0;
 
   Object.keys(peers).forEach(id => closePeer(id));
