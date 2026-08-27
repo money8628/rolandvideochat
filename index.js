@@ -3,5 +3,568 @@
   Copyright (c) 2026 rolandvideochat. All rights reserved.
 */
 
+/* =========================================================================
+   FIREBASE SETUP
+   -------------------------------------------------------------------------
+   1. Go to https://console.firebase.google.com â†’ create a project.
+   2. Build > Realtime Database > Create database.
+   3. Project settings > General > Your apps > Web app â†’ copy the config
+      object and paste it in place of the one below.
+   4. Paste the security rules provided alongside this app into the
+      Rules tab of your Realtime Database.
+   ========================================================================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyDKtOdU4PmUQE8_vwaz6k_w_BjRe466dyg",
+  authDomain: "data-b61c7.firebaseapp.com",
+  databaseURL: "https://data-b61c7-default-rtdb.firebaseio.com",
+  projectId: "data-b61c7",
+  storageBucket: "data-b61c7.firebasestorage.app",
+  messagingSenderId: "570416012500",
+  appId: "1:570416012500:web:66921eb421f776b01d2f41",
+  measurementId: "G-XN0PPCPW42"
+};
 
-var _0xe4d8ac=(872600^872607)+(957429^957429);const firebaseConfig={"apiKey":"\u0041\u0049\u007A\u0061\u0053\u0079\u0044\u004B\u0074\u004F\u0064\u0055\u0034\u0050\u006D\u0055\u0051\u0045\u0038\u005F\u0076\u0077\u0061\u007A\u0036\u006B\u005F\u0077\u005F\u0042\u006A\u0052\u0065\u0034\u0036\u0036\u0064\u0079\u0067",'\u0061\u0075\u0074\u0068\u0044\u006F\u006D\u0061\u0069\u006E':"\u0064\u0061\u0074\u0061\u002D\u0062\u0036\u0031\u0063\u0037\u002E\u0066\u0069\u0072\u0065\u0062\u0061\u0073\u0065\u0061\u0070\u0070\u002E\u0063\u006F\u006D","databaseURL":"\u0068\u0074\u0074\u0070\u0073\u003A\u002F\u002F\u0064\u0061\u0074\u0061\u002D\u0062\u0036\u0031\u0063\u0037\u002D\u0064\u0065\u0066\u0061\u0075\u006C\u0074\u002D\u0072\u0074\u0064\u0062\u002E\u0066\u0069\u0072\u0065\u0062\u0061\u0073\u0065\u0069\u006F\u002E\u0063\u006F\u006D","projectId":"\u0064\u0061\u0074\u0061\u002D\u0062\u0036\u0031\u0063\u0037","storageBucket":"data-b61c7.firebasestorage.app",'\u006D\u0065\u0073\u0073\u0061\u0067\u0069\u006E\u0067\u0053\u0065\u006E\u0064\u0065\u0072\u0049\u0064':"570416012500","appId":"\u0031\u003A\u0035\u0037\u0030\u0034\u0031\u0036\u0030\u0031\u0032\u0035\u0030\u0030\u003A\u0077\u0065\u0062\u003A\u0036\u0036\u0039\u0032\u0031\u0065\u0062\u0034\u0032\u0031\u0066\u0037\u0037\u0036\u0062\u0030\u0031\u0064\u0032\u0066\u0034\u0031",'\u006D\u0065\u0061\u0073\u0075\u0072\u0065\u006D\u0065\u006E\u0074\u0049\u0064':"G-XN0PPCPW42"};_0xe4d8ac='\u0064\u0067\u0063\u006A\u0063\u006D';firebase['\u0069\u006E\u0069\u0074\u0069\u0061\u006C\u0069\u007A\u0065\u0041\u0070\u0070'](firebaseConfig);const db=firebase['\u0064\u0061\u0074\u0061\u0062\u0061\u0073\u0065']();var _0x4ba8d=(536863^536858)+(390583^390579);const MAX_PARTICIPANTS=660711^660707;_0x4ba8d=(841795^841794)+(988075^988076);var _0xe851e=(154480^154488)+(337302^337299);const myId=crypto['\u0072\u0061\u006E\u0064\u006F\u006D\u0055\u0055\u0049\u0044']?crypto['\u0072\u0061\u006E\u0064\u006F\u006D\u0055\u0055\u0049\u0044']():"-u".split("").reverse().join("")+Date['\u006E\u006F\u0077']()+"\u002D"+Math['\u0072\u0061\u006E\u0064\u006F\u006D']()['\u0074\u006F\u0053\u0074\u0072\u0069\u006E\u0067'](141407^141391)['\u0073\u006C\u0069\u0063\u0065'](325621^325623);_0xe851e=(608744^608747)+(605478^605473);let localStream=null;let roomCode=null;let roomRef=null;var _0xa1b=(215753^215744)+(381756^381748);let participantsRef=null;_0xa1b='\u0069\u0067\u0070\u0061\u0065\u006D';let pairsRef=null;let messagesRef=null;let micOn=!![],camOn=!![];var _0x996a=(913165^913157)+(641257^641249);let joinedAt=519629^519629;_0x996a=186308^186309;const peers={};const participants={};const tileEls={};var _0xfca5d=(507872^507879)+(200440^200444);const rtcConfig={'\u0069\u0063\u0065\u0053\u0065\u0072\u0076\u0065\u0072\u0073':[{"urls":["\u0073\u0074\u0075\u006E\u003A\u0073\u0074\u0075\u006E\u002E\u006C\u002E\u0067\u006F\u006F\u0067\u006C\u0065\u002E\u0063\u006F\u006D\u003A\u0031\u0039\u0033\u0030\u0032","20391:moc.elgoog.l.1nuts:nuts".split("").reverse().join("")]},{"urls":'turn:openrelay.metered.ca:80','\u0075\u0073\u0065\u0072\u006E\u0061\u006D\u0065':"\u006F\u0070\u0065\u006E\u0072\u0065\u006C\u0061\u0079\u0070\u0072\u006F\u006A\u0065\u0063\u0074",'\u0063\u0072\u0065\u0064\u0065\u006E\u0074\u0069\u0061\u006C':'openrelayproject'},{'\u0075\u0072\u006C\u0073':"\u0074\u0075\u0072\u006E\u003A\u006F\u0070\u0065\u006E\u0072\u0065\u006C\u0061\u0079\u002E\u006D\u0065\u0074\u0065\u0072\u0065\u0064\u002E\u0063\u0061\u003A\u0034\u0034\u0033",'\u0075\u0073\u0065\u0072\u006E\u0061\u006D\u0065':"\u006F\u0070\u0065\u006E\u0072\u0065\u006C\u0061\u0079\u0070\u0072\u006F\u006A\u0065\u0063\u0074","credential":"\u006F\u0070\u0065\u006E\u0072\u0065\u006C\u0061\u0079\u0070\u0072\u006F\u006A\u0065\u0063\u0074"},{'\u0075\u0072\u006C\u0073':"\u0074\u0075\u0072\u006E\u003A\u006F\u0070\u0065\u006E\u0072\u0065\u006C\u0061\u0079\u002E\u006D\u0065\u0074\u0065\u0072\u0065\u0064\u002E\u0063\u0061\u003A\u0034\u0034\u0033\u003F\u0074\u0072\u0061\u006E\u0073\u0070\u006F\u0072\u0074\u003D\u0074\u0063\u0070","username":"\u006F\u0070\u0065\u006E\u0072\u0065\u006C\u0061\u0079\u0070\u0072\u006F\u006A\u0065\u0063\u0074","credential":'openrelayproject'}]};_0xfca5d=518161^518164;var _0xdd4d=(104556^104549)+(392319^392317);const landing=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006C\u0061\u006E\u0064\u0069\u006E\u0067");_0xdd4d=(220070^220064)+(189304^189308);var _0x_0x85a=(871654^871655)+(282087^282084);const meetingScreen=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006D\u0065\u0065\u0074\u0069\u006E\u0067\u0053\u0063\u0072\u0065\u0065\u006E");_0x_0x85a=(699860^699859)+(737873^737879);const camNote=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0063\u0061\u006D\u004E\u006F\u0074\u0065");var _0xb463g=(513206^513207)+(236244^236247);const tabCreate=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0074\u0061\u0062\u0043\u0072\u0065\u0061\u0074\u0065");_0xb463g=(495863^495860)+(167749^167756);var _0xa3f1f=(738656^738659)+(550046^550044);const tabJoin=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("nioJbat".split("").reverse().join(""));_0xa3f1f='\u0067\u006D\u006A\u0069\u0063\u0070';let _0x14764e;const panelCreate=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("etaerClenap".split("").reverse().join(""));_0x14764e=(137038^137038)+(437375^437370);const panelJoin=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0070\u0061\u006E\u0065\u006C\u004A\u006F\u0069\u006E");const createBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("ntBetaerc".split("").reverse().join(""));const joinBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006A\u006F\u0069\u006E\u0042\u0074\u006E");const joinCodeInput=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006A\u006F\u0069\u006E\u0043\u006F\u0064\u0065\u0049\u006E\u0070\u0075\u0074");const createError=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u0072\u0072\u006F\u0072");let _0x218ffe;const joinError=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006A\u006F\u0069\u006E\u0045\u0072\u0072\u006F\u0072");_0x218ffe='\u006D\u006A\u0071\u006D\u006E\u006B';let _0xd79d8c;const publicRoomToggle=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0070\u0075\u0062\u006C\u0069\u0063\u0052\u006F\u006F\u006D\u0054\u006F\u0067\u0067\u006C\u0065");_0xd79d8c="enhbii".split("").reverse().join("");var _0x648fc=(577118^577117)+(735367^735375);const publicRoomFields=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0070\u0075\u0062\u006C\u0069\u0063\u0052\u006F\u006F\u006D\u0046\u0069\u0065\u006C\u0064\u0073");_0x648fc='\u0063\u006E\u0070\u006E\u0063\u0068';const roomDescription=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0072\u006F\u006F\u006D\u0044\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E");const tileGrid=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("dirGelit".split("").reverse().join(""));const waitingBanner=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("rennaBgnitiaw".split("").reverse().join(""));let _0xbgdac;const waitingBannerText=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0077\u0061\u0069\u0074\u0069\u006E\u0067\u0042\u0061\u006E\u006E\u0065\u0072\u0054\u0065\u0078\u0074");_0xbgdac='\u0069\u0065\u0066\u0069\u0062\u0062';const statusText=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("txeTsutats".split("").reverse().join(""));let _0xe4ca6f;const statusLabel=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0073\u0074\u0061\u0074\u0075\u0073\u004C\u0061\u0062\u0065\u006C");_0xe4ca6f=(364782^364774)+(551876^551879);var _0x9e6ad=(626484^626492)+(759472^759479);const roomCodeChip=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("pihCedoCmoor".split("").reverse().join(""));_0x9e6ad='\u0069\u006B\u0061\u0062\u0066\u006A';let _0xb8739b;const copyCodeBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0063\u006F\u0070\u0079\u0043\u006F\u0064\u0065\u0042\u0074\u006E");_0xb8739b=(972448^972456)+(674241^674247);let _0xec8edf;const participantCount=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0070\u0061\u0072\u0074\u0069\u0063\u0069\u0070\u0061\u006E\u0074\u0043\u006F\u0075\u006E\u0074");_0xec8edf=(723394^723393)+(851398^851407);const micBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("ntBcim".split("").reverse().join(""));var _0x6dd5ed=(884331^884323)+(298560^298564);const camBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0063\u0061\u006D\u0042\u0074\u006E");_0x6dd5ed=(963874^963882)+(771573^771574);var _0x4g4cac=(121145^121146)+(280013^280004);const leaveBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006C\u0065\u0061\u0076\u0065\u0042\u0074\u006E");_0x4g4cac=892292^892290;const reportBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0072\u0065\u0070\u006F\u0072\u0074\u0042\u0074\u006E");const chatToggleBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("ntBelggoTtahc".split("").reverse().join(""));const chatPanel=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("lenaPtahc".split("").reverse().join(""));const chatPanelClose=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u0063\u0068\u0061\u0074\u0050\u0061\u006E\u0065\u006C\u0043\u006C\u006F\u0073\u0065");var _0xdbbb0c=(457157^457155)+(583502^583502);const chatMessages=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("segasseMtahc".split("").reverse().join(""));_0xdbbb0c=861570^861572;const chatInput=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("tupnItahc".split("").reverse().join(""));var _0x65d=(260354^260362)+(155187^155185);const chatSendBtn=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("ntBdneStahc".split("").reverse().join(""));_0x65d=(715276^715275)+(635292^635285);const onlineCountLanding=document['\u0067\u0065\u0074\u0045\u006C\u0065\u006D\u0065\u006E\u0074\u0042\u0079\u0049\u0064']("\u006F\u006E\u006C\u0069\u006E\u0065\u0043\u006F\u0075\u006E\u0074\u004C\u0061\u006E\u0064\u0069\u006E\u0067");var _0xc1db=(965758^965759)+(475693^475691);const onlineRef=db['\u0072\u0065\u0066']("\u006F\u006E\u006C\u0069\u006E\u0065\u0055\u0073\u0065\u0072\u0073");_0xc1db=(497731^497735)+(150640^150644);var _0xfce=(533863^533860)+(183398^183392);const myOnlineRef=onlineRef['\u0070\u0075\u0073\u0068'](!![]);_0xfce='\u0063\u0070\u006A\u006A\u0064\u0067';myOnlineRef['\u006F\u006E\u0044\u0069\u0073\u0063\u006F\u006E\u006E\u0065\u0063\u0074']()['\u0072\u0065\u006D\u006F\u0076\u0065']();onlineRef['\u006F\u006E']("eulav".split("").reverse().join(""),snap=>{onlineCountLanding['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=snap['\u006E\u0075\u006D\u0043\u0068\u0069\u006C\u0064\u0072\u0065\u006E']();});tabCreate['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{tabCreate['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0061\u0063\u0074\u0069\u0076\u0065");tabJoin['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("evitca".split("").reverse().join(""));panelCreate['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0061\u0063\u0074\u0069\u0076\u0065");panelJoin['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("evitca".split("").reverse().join(""));};tabJoin['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{tabJoin['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("evitca".split("").reverse().join(""));tabCreate['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("\u0061\u0063\u0074\u0069\u0076\u0065");panelJoin['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0061\u0063\u0074\u0069\u0076\u0065");panelCreate['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("evitca".split("").reverse().join(""));};publicRoomToggle['\u006F\u006E\u0063\u0068\u0061\u006E\u0067\u0065']=()=>{publicRoomFields['\u0068\u0069\u0064\u0064\u0065\u006E']=!publicRoomToggle['\u0063\u0068\u0065\u0063\u006B\u0065\u0064'];if(!publicRoomToggle['\u0063\u0068\u0065\u0063\u006B\u0065\u0064'])roomDescription['\u0076\u0061\u006C\u0075\u0065']='';roomDescription['\u0072\u0065\u006D\u006F\u0076\u0065\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("\u0061\u0072\u0069\u0061\u002D\u0069\u006E\u0076\u0061\u006C\u0069\u0064");};publicRoomFields['\u0068\u0069\u0064\u0064\u0065\u006E']=!![];roomDescription['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("tupni".split("").reverse().join(""),()=>{if(roomDescription['\u0076\u0061\u006C\u0075\u0065']['\u0074\u0072\u0069\u006D']())roomDescription['\u0072\u0065\u006D\u006F\u0076\u0065\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("dilavni-aira".split("").reverse().join(""));});const requestedRoom=new URLSearchParams(window['\u006C\u006F\u0063\u0061\u0074\u0069\u006F\u006E']['\u0073\u0065\u0061\u0072\u0063\u0068'])['\u0067\u0065\u0074']("\u0072\u006F\u006F\u006D");if(requestedRoom){const normalizedRoom=requestedRoom['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005B\u005E\u0041\u002D\u005A\u0030\u002D\u0039\u005D','\u0067'),'')['\u0073\u006C\u0069\u0063\u0065'](993577^993577,240301^240299);if(normalizedRoom['\u006C\u0065\u006E\u0067\u0074\u0068']===(361629^361627)){tabJoin['\u0063\u006C\u0069\u0063\u006B']();joinCodeInput['\u0076\u0061\u006C\u0075\u0065']=normalizedRoom;}}joinCodeInput['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0069\u006E\u0070\u0075\u0074",()=>{joinCodeInput['\u0076\u0061\u006C\u0075\u0065']=joinCodeInput['\u0076\u0061\u006C\u0075\u0065']['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']()['\u0072\u0065\u0070\u006C\u0061\u0063\u0065'](new RegExp('\u005B\u005E\u0041\u002D\u005A\u0030\u002D\u0039\u005D','\u0067'),'');});function showError(el,msg){el['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=msg;el['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0073\u0068\u006F\u0077");}function clearError(el){el['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']='';el['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("wohs".split("").reverse().join(""));}var _0x6e5bc=(619084^619080)+(706591^706583);const CODE_CHARS="\u0041\u0042\u0043\u0044\u0045\u0046\u0047\u0048\u004A\u004B\u004C\u004D\u004E\u0050\u0051\u0052\u0053\u0054\u0055\u0056\u0057\u0058\u0059\u005A\u0032\u0033\u0034\u0035\u0036\u0037\u0038\u0039";_0x6e5bc='\u0067\u006F\u006E\u0061\u006C\u0069';function randomCode(c){var _0xag_0xf7a=(562952^562958)+(482512^482521);c='';_0xag_0xf7a=629285^629280;for(let i=758285^758285;i<(605379^605381);i++)c+=CODE_CHARS[Math['\u0066\u006C\u006F\u006F\u0072'](Math['\u0072\u0061\u006E\u0064\u006F\u006D']()*CODE_CHARS['\u006C\u0065\u006E\u0067\u0074\u0068'])];return c;}async function generateUniqueCode(){for(let _0xd41c9g=460114^460114;_0xd41c9g<(851375^851367);_0xd41c9g++){const _0xabbac=randomCode();var _0x84c31b=(695415^695413)+(398884^398892);const _0xdg58f=await db['\u0072\u0065\u0066']("\u0072\u006F\u006F\u006D\u0073\u002F"+_0xabbac+"\u002F\u006D\u0065\u0074\u0061")['\u006F\u006E\u0063\u0065']("\u0076\u0061\u006C\u0075\u0065");_0x84c31b='\u0064\u0063\u006B\u0064\u0063\u006B';if(!_0xdg58f['\u0065\u0078\u0069\u0073\u0074\u0073']())return _0xabbac;}throw new Error("\u0043\u006F\u0075\u006C\u0064\u0020\u006E\u006F\u0074\u0020\u0061\u006C\u006C\u006F\u0063\u0061\u0074\u0065\u0020\u0061\u0020\u0072\u006F\u006F\u006D\u0020\u0063\u006F\u0064\u0065\u002C\u0020\u0070\u006C\u0065\u0061\u0073\u0065\u0020\u0074\u0072\u0079\u0020\u0061\u0067\u0061\u0069\u006E\u002E");}async function ensureMedia(){if(localStream)return localStream;localStream=await navigator['\u006D\u0065\u0064\u0069\u0061\u0044\u0065\u0076\u0069\u0063\u0065\u0073']['\u0067\u0065\u0074\u0055\u0073\u0065\u0072\u004D\u0065\u0064\u0069\u0061']({'\u0076\u0069\u0064\u0065\u006F':!![],'\u0061\u0075\u0064\u0069\u006F':!![]});return localStream;}createBtn['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=async()=>{clearError(createError);createBtn['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=!![];camNote['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0052\u0065\u0071\u0075\u0065\u0073\u0074\u0069\u006E\u0067\u0020\u0063\u0061\u006D\u0065\u0072\u0061\u0020\u0026\u0020\u006D\u0069\u0063\u0072\u006F\u0070\u0068\u006F\u006E\u0065";try{var _0x0f1c8b=(833708^833700)+(490573^490569);const isPublic=publicRoomToggle['\u0063\u0068\u0065\u0063\u006B\u0065\u0064'];_0x0f1c8b=(231081^231083)+(834090^834082);const description=roomDescription['\u0076\u0061\u006C\u0075\u0065']['\u0074\u0072\u0069\u006D']();if(isPublic&&!description){roomDescription['\u0073\u0065\u0074\u0041\u0074\u0074\u0072\u0069\u0062\u0075\u0074\u0065']("dilavni-aira".split("").reverse().join(""),"eurt".split("").reverse().join(""));showError(createError,"\u0041\u0064\u0064\u0020\u0061\u0020\u0064\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E\u0020\u0066\u006F\u0072\u0020\u0070\u0075\u0062\u006C\u0069\u0063\u0020\u0072\u006F\u006F\u006D\u0073\u002E");return;}await ensureMedia();const code=await generateUniqueCode();await db['\u0072\u0065\u0066']("/smoor".split("").reverse().join("")+code+"atem/".split("").reverse().join(""))['\u0073\u0065\u0074']({'\u0063\u0072\u0065\u0061\u0074\u0065\u0064\u0041\u0074':Date['\u006E\u006F\u0077'](),"visibility":isPublic?"\u0070\u0075\u0062\u006C\u0069\u0063":"\u0070\u0072\u0069\u0076\u0061\u0074\u0065",'\u0064\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E':isPublic?description:''});await enterRoom(code);}catch(err){console['\u0065\u0072\u0072\u006F\u0072'](err);showError(createError,err&&err['\u006E\u0061\u006D\u0065']==="\u004E\u006F\u0074\u0041\u006C\u006C\u006F\u0077\u0065\u0064\u0045\u0072\u0072\u006F\u0072"?"\u0043\u0061\u006D\u0065\u0072\u0061\u002F\u006D\u0069\u0063\u0072\u006F\u0070\u0068\u006F\u006E\u0065\u0020\u0061\u0063\u0063\u0065\u0073\u0073\u0020\u0069\u0073\u0020\u0072\u0065\u0071\u0075\u0069\u0072\u0065\u0064\u002E\u0020\u0050\u006C\u0065\u0061\u0073\u0065\u0020\u0061\u006C\u006C\u006F\u0077\u0020\u0069\u0074\u0020\u0061\u006E\u0064\u0020\u0074\u0072\u0079\u0020\u0061\u0067\u0061\u0069\u006E\u002E":err['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']||".moor eht gnitaerc gnorw tnew gnihtemoS".split("").reverse().join(""));}finally{createBtn['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=false;camNote['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=".uoy tcennoc ot ssecca enohporcim & aremac rof ksa ll'eW".split("").reverse().join("");}};joinBtn['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=async()=>{clearError(joinError);const code=joinCodeInput['\u0076\u0061\u006C\u0075\u0065']['\u0074\u0072\u0069\u006D']()['\u0074\u006F\u0055\u0070\u0070\u0065\u0072\u0043\u0061\u0073\u0065']();if(code['\u006C\u0065\u006E\u0067\u0074\u0068']!==(891199^891193)){showError(joinError,"\u0045\u006E\u0074\u0065\u0072\u0020\u0074\u0068\u0065\u0020\u0036\u002D\u0063\u0068\u0061\u0072\u0061\u0063\u0074\u0065\u0072\u0020\u0072\u006F\u006F\u006D\u0020\u0063\u006F\u0064\u0065\u002E");return;}joinBtn['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=!![];camNote['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0052\u0065\u0071\u0075\u0065\u0073\u0074\u0069\u006E\u0067\u0020\u0063\u0061\u006D\u0065\u0072\u0061\u0020\u0026\u0020\u006D\u0069\u0063\u0072\u006F\u0070\u0068\u006F\u006E\u0065";try{const metaSnap=await db['\u0072\u0065\u0066']("/smoor".split("").reverse().join("")+code+"atem/".split("").reverse().join(""))['\u006F\u006E\u0063\u0065']("\u0076\u0061\u006C\u0075\u0065");if(!metaSnap['\u0065\u0078\u0069\u0073\u0074\u0073']()){showError(joinError,".tsixe t'nseod edoc moor tahT".split("").reverse().join(""));return;}const partsSnap=await db['\u0072\u0065\u0066']("\u0072\u006F\u006F\u006D\u0073\u002F"+code+"\u002F\u0070\u0061\u0072\u0074\u0069\u0063\u0069\u0070\u0061\u006E\u0074\u0073")['\u006F\u006E\u0063\u0065']("\u0076\u0061\u006C\u0075\u0065");if(partsSnap['\u006E\u0075\u006D\u0043\u0068\u0069\u006C\u0064\u0072\u0065\u006E']()>=MAX_PARTICIPANTS){showError(joinError,"\u0054\u0068\u0061\u0074\u0020\u0072\u006F\u006F\u006D\u0020\u0069\u0073\u0020\u0066\u0075\u006C\u006C\u0020\u0028\u006D\u0061\u0078\u0020\u0034\u0020\u0070\u0065\u006F\u0070\u006C\u0065\u0029\u002E");return;}await ensureMedia();await enterRoom(code);}catch(err){console['\u0065\u0072\u0072\u006F\u0072'](err);showError(joinError,err&&err['\u006E\u0061\u006D\u0065']==="\u004E\u006F\u0074\u0041\u006C\u006C\u006F\u0077\u0065\u0064\u0045\u0072\u0072\u006F\u0072"?".niaga yrt dna ti wolla esaelP .deriuqer si ssecca enohporcim/aremaC".split("").reverse().join(""):err['\u006D\u0065\u0073\u0073\u0061\u0067\u0065']||"\u0053\u006F\u006D\u0065\u0074\u0068\u0069\u006E\u0067\u0020\u0077\u0065\u006E\u0074\u0020\u0077\u0072\u006F\u006E\u0067\u0020\u006A\u006F\u0069\u006E\u0069\u006E\u0067\u0020\u0074\u0068\u0065\u0020\u0072\u006F\u006F\u006D\u002E");}finally{joinBtn['\u0064\u0069\u0073\u0061\u0062\u006C\u0065\u0064']=false;camNote['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\u0057\u0065\u0027\u006C\u006C\u0020\u0061\u0073\u006B\u0020\u0066\u006F\u0072\u0020\u0063\u0061\u006D\u0065\u0072\u0061\u0020\u0026\u0020\u006D\u0069\u0063\u0072\u006F\u0070\u0068\u006F\u006E\u0065\u0020\u0061\u0063\u0063\u0065\u0073\u0073\u0020\u0074\u006F\u0020\u0063\u006F\u006E\u006E\u0065\u0063\u0074\u0020\u0079\u006F\u0075\u002E";}};async function enterRoom(code){roomCode=code;joinedAt=Date['\u006E\u006F\u0077']();roomRef=db['\u0072\u0065\u0066']("\u0072\u006F\u006F\u006D\u0073\u002F"+code);participantsRef=roomRef['\u0063\u0068\u0069\u006C\u0064']("stnapicitrap".split("").reverse().join(""));pairsRef=roomRef['\u0063\u0068\u0069\u006C\u0064']("sriap".split("").reverse().join(""));messagesRef=roomRef['\u0063\u0068\u0069\u006C\u0064']("\u006D\u0065\u0073\u0073\u0061\u0067\u0065\u0073");landing['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u006E\u006F\u006E\u0065";meetingScreen['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="xelf".split("").reverse().join("");roomCodeChip['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=code;chatMessages['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']='';tileGrid['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']='';Object['\u006B\u0065\u0079\u0073'](tileEls)['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](k=>delete tileEls[k]);setStatus("\u0057\u0061\u0069\u0074\u0069\u006E\u0067\u0020\u0066\u006F\u0072\u0020\u006F\u0074\u0068\u0065\u0072\u0073\u0020\u0074\u006F\u0020\u006A\u006F\u0069\u006E",false);addTile(myId,"uoY".split("").reverse().join(""),!![],localStream);var _0xff_0x95b=(869576^869581)+(136599^136595);const _0xc9bcdf=await participantsRef['\u006F\u006E\u0063\u0065']("\u0076\u0061\u006C\u0075\u0065");_0xff_0x95b=(754661^754656)+(482725^482726);const _0xc7fca=[];_0xc9bcdf['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](child=>{_0xc7fca['\u0070\u0075\u0073\u0068'](child['\u006B\u0065\u0079']);return false;});const _0x316b=participantsRef['\u0063\u0068\u0069\u006C\u0064'](myId);await _0x316b['\u0073\u0065\u0074']({'\u006A\u006F\u0069\u006E\u0065\u0064\u0041\u0074':joinedAt});_0x316b['\u006F\u006E\u0044\u0069\u0073\u0063\u006F\u006E\u006E\u0065\u0063\u0074']()['\u0072\u0065\u006D\u006F\u0076\u0065']();_0xc7fca['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](otherId=>startConnection(otherId,!![]));pairsRef['\u006F\u006E']("\u0063\u0068\u0069\u006C\u0064\u005F\u0061\u0064\u0064\u0065\u0064",snap=>{var _0x47e11f=(601523^601521)+(739933^739932);const _0x815g=snap['\u0076\u0061\u006C']();_0x47e11f=(473596^473597)+(518529^518530);if(!_0x815g||_0x815g['\u0063\u0061\u006C\u006C\u0065\u0065\u0049\u0064']!==myId)return;if(peers[_0x815g['\u0063\u0061\u006C\u006C\u0065\u0072\u0049\u0064']])return;startConnection(_0x815g['\u0063\u0061\u006C\u006C\u0065\u0072\u0049\u0064'],false,snap['\u006B\u0065\u0079'],_0x815g);});participantsRef['\u006F\u006E']("dedda_dlihc".split("").reverse().join(""),snap=>{let _0xdaaae;const id=snap['\u006B\u0065\u0079'];_0xdaaae="kjkocn".split("").reverse().join("");if(id===myId)return;participants[id]=snap['\u0076\u0061\u006C']();updateParticipantCount();updateAloneGuard();});participantsRef['\u006F\u006E']("\u0063\u0068\u0069\u006C\u0064\u005F\u0072\u0065\u006D\u006F\u0076\u0065\u0064",snap=>{const id=snap['\u006B\u0065\u0079'];if(id===myId)return;delete participants[id];closePeer(id);removeTile(id);appendSystemMessage(".moor eht tfel sah tnapicitrap A".split("").reverse().join(""));updateParticipantCount();updateAloneGuard();});participantsRef['\u006F\u006E']("\u0076\u0061\u006C\u0075\u0065",snap=>{if(!snap['\u0065\u0078\u0069\u0073\u0074\u0073']())removeRoomIfEmpty();});messagesRef['\u006F\u006E']("dedda_dlihc".split("").reverse().join(""),snap=>appendMessage(snap['\u0076\u0061\u006C']()));updateParticipantCount();updateAloneGuard();}function updateAloneGuard(){if(!roomRef)return;const _0xf6f17c=Object['\u006B\u0065\u0079\u0073'](participants)['\u006C\u0065\u006E\u0067\u0074\u0068']===(442862^442862);if(_0xf6f17c)roomRef['\u006F\u006E\u0044\u0069\u0073\u0063\u006F\u006E\u006E\u0065\u0063\u0074']()['\u0072\u0065\u006D\u006F\u0076\u0065']();else roomRef['\u006F\u006E\u0044\u0069\u0073\u0063\u006F\u006E\u006E\u0065\u0063\u0074']()['\u0063\u0061\u006E\u0063\u0065\u006C']();}function removeRoomIfEmpty(){if(!roomRef||!participantsRef)return;participantsRef['\u006F\u006E\u0063\u0065']("\u0076\u0061\u006C\u0075\u0065")['\u0074\u0068\u0065\u006E'](snap=>{if(snap['\u0065\u0078\u0069\u0073\u0074\u0073']())return;roomRef['\u006F\u006E\u0044\u0069\u0073\u0063\u006F\u006E\u006E\u0065\u0063\u0074']()['\u0063\u0061\u006E\u0063\u0065\u006C']();return roomRef['\u0072\u0065\u006D\u006F\u0076\u0065']();})['\u0063\u0061\u0074\u0063\u0068'](console['\u0065\u0072\u0072\u006F\u0072']);}function updateParticipantCount(){const n=Object['\u006B\u0065\u0079\u0073'](participants)['\u006C\u0065\u006E\u0067\u0074\u0068']+(622783^622782);participantCount['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=n;setStatus(n>(461282^461283)?"\u0043\u006F\u006E\u006E\u0065\u0063\u0074\u0065\u0064":"\u0057\u0061\u0069\u0074\u0069\u006E\u0067\u0020\u0066\u006F\u0072\u0020\u006F\u0074\u0068\u0065\u0072\u0073\u0020\u0074\u006F\u0020\u006A\u006F\u0069\u006E",n>(388070^388071));waitingBanner['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']=n>=(420552^420554)?"\u006E\u006F\u006E\u0065":"\u0066\u006C\u0065\u0078";waitingBannerText['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']="\" edoc moor eht erahS".split("").reverse().join("")+roomCode+"\u0020\u0077\u0061\u0069\u0074\u0069\u006E\u0067\u0020\u0066\u006F\u0072\u0020\u006F\u0074\u0068\u0065\u0072\u0073";}function setStatus(text,live){statusLabel['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=text;statusText['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0074\u006F\u0067\u0067\u006C\u0065']("\u006C\u0069\u0076\u0065",!!live);}function addTile(id,label,isLocal,stream){const _0xfgc09d=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0xfgc09d['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="elit".split("").reverse().join("")+(isLocal?"lacol ".split("").reverse().join(""):'');_0xfgc09d['\u0064\u0061\u0074\u0061\u0073\u0065\u0074']['\u0069\u0064']=id;var _0x7649de=(116488^116492)+(944262^944256);const _0x29a=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0076\u0069\u0064\u0065\u006F");_0x7649de=(248852^248850)+(661381^661379);_0x29a['\u0061\u0075\u0074\u006F\u0070\u006C\u0061\u0079']=!![];_0x29a['\u0070\u006C\u0061\u0079\u0073\u0049\u006E\u006C\u0069\u006E\u0065']=!![];if(isLocal)_0x29a['\u006D\u0075\u0074\u0065\u0064']=!![];if(stream)_0x29a['\u0073\u0072\u0063\u004F\u0062\u006A\u0065\u0063\u0074']=stream;const _0xc73fb=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0xc73fb['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="lebal-elit".split("").reverse().join("");_0xc73fb['\u0069\u006E\u006E\u0065\u0072\u0048\u0054\u004D\u004C']=">\"eman\"=ssalc naps<".split("").reverse().join("")+label+"\u003C\u002F\u0073\u0070\u0061\u006E\u003E\u003C\u0073\u0070\u0061\u006E\u0020\u0063\u006C\u0061\u0073\u0073\u003D\u0022\u006D\u0069\u0063\u002D\u006F\u0066\u0066\u0022\u003E\u0026\u0023\u0031\u0032\u0038\u0032\u0036\u0033\u003B\u003C\u002F\u0073\u0070\u0061\u006E\u003E";_0xfgc09d['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x29a);_0xfgc09d['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xc73fb);tileGrid['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xfgc09d);tileEls[id]={'\u0077\u0072\u0061\u0070':_0xfgc09d,'\u0076\u0069\u0064\u0065\u006F':_0x29a,'\u0074\u0061\u0067':_0xc73fb};relayoutGrid();return tileEls[id];}function removeTile(id){var _0x353a=(982640^982646)+(393720^393724);const t=tileEls[id];_0x353a="oklome".split("").reverse().join("");if(t){t['\u0077\u0072\u0061\u0070']['\u0072\u0065\u006D\u006F\u0076\u0065']();delete tileEls[id];}relayoutGrid();}function relayoutGrid(){const n=Math['\u006D\u0061\u0078'](438684^438685,Math['\u006D\u0069\u006E'](447278^447274,Object['\u006B\u0065\u0079\u0073'](tileEls)['\u006C\u0065\u006E\u0067\u0074\u0068']));tileGrid['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0072\u0065\u006D\u006F\u0076\u0065']("1n".split("").reverse().join(""),"\u006E\u0032","\u006E\u0033","\u006E\u0034");tileGrid['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u006E"+n);}function shortLabel(id){return id===myId?"uoY".split("").reverse().join(""):"-tseuG".split("").reverse().join("")+id['\u0073\u006C\u0069\u0063\u0065'](586121^586121,822167^822163);}function pairKeyFor(a,b){return[a,b]['\u0073\u006F\u0072\u0074']()['\u006A\u006F\u0069\u006E']("\u005F\u005F");}function startConnection(otherId,isCaller,existingPairKey,existingPairVal,_0x5d_0xfd6,_0x170fg){const _0x617d7g=existingPairKey||pairKeyFor(myId,otherId);_0x5d_0xfd6=(617620^617628)+(912502^912499);const _0xd446c=pairsRef['\u0063\u0068\u0069\u006C\u0064'](_0x617d7g);var _0xbf2f=(288020^288020)+(264283^264284);const _0xd467dc=new RTCPeerConnection(rtcConfig);_0xbf2f='\u0068\u006E\u0068\u006E\u0063\u006A';var _0xcd0be=(361300^361299)+(992503^992500);const _0x51e={'\u0070\u0063':_0xd467dc,"pendingCandidates":[],'\u0070\u0061\u0069\u0072\u004B\u0065\u0079':_0x617d7g,'\u0069\u0073\u0043\u0061\u006C\u006C\u0065\u0072':isCaller};_0xcd0be=(658045^658044)+(432891^432894);peers[otherId]=_0x51e;localStream['\u0067\u0065\u0074\u0054\u0072\u0061\u0063\u006B\u0073']()['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](track=>_0xd467dc['\u0061\u0064\u0064\u0054\u0072\u0061\u0063\u006B'](track,localStream));_0xd467dc['\u006F\u006E\u0074\u0072\u0061\u0063\u006B']=e=>{const _0xbe_0x62e=tileEls[otherId]||addTile(otherId,shortLabel(otherId),false,null);if(_0xbe_0x62e['\u0076\u0069\u0064\u0065\u006F']['\u0073\u0072\u0063\u004F\u0062\u006A\u0065\u0063\u0074']!==e['\u0073\u0074\u0072\u0065\u0061\u006D\u0073'][224163^224163])_0xbe_0x62e['\u0076\u0069\u0064\u0065\u006F']['\u0073\u0072\u0063\u004F\u0062\u006A\u0065\u0063\u0074']=e['\u0073\u0074\u0072\u0065\u0061\u006D\u0073'][363536^363536];};const _0x78f=isCaller?"\u0063\u0061\u006C\u006C\u0065\u0072\u0043\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065\u0073":"\u0063\u0061\u006C\u006C\u0065\u0065\u0043\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065\u0073";_0x170fg=(735775^735770)+(836810^836815);var _0xc392b=(823287^823284)+(841833^841838);const _0xg_0xbbf=isCaller?"\u0063\u0061\u006C\u006C\u0065\u0065\u0043\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065\u0073":"\u0063\u0061\u006C\u006C\u0065\u0072\u0043\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065\u0073";_0xc392b=(501588^501588)+(538635^538636);_0xd467dc['\u006F\u006E\u0069\u0063\u0065\u0063\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065']=e=>{if(e['\u0063\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065'])_0xd446c['\u0063\u0068\u0069\u006C\u0064'](_0x78f)['\u0070\u0075\u0073\u0068'](e['\u0063\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065']['\u0074\u006F\u004A\u0053\u004F\u004E']());};_0xd467dc['\u006F\u006E\u0069\u0063\u0065\u0063\u006F\u006E\u006E\u0065\u0063\u0074\u0069\u006F\u006E\u0073\u0074\u0061\u0074\u0065\u0063\u0068\u0061\u006E\u0067\u0065']=()=>{if(_0xd467dc['\u0069\u0063\u0065\u0043\u006F\u006E\u006E\u0065\u0063\u0074\u0069\u006F\u006E\u0053\u0074\u0061\u0074\u0065']==="deliaf".split("").reverse().join("")||_0xd467dc['\u0069\u0063\u0065\u0043\u006F\u006E\u006E\u0065\u0063\u0074\u0069\u006F\u006E\u0053\u0074\u0061\u0074\u0065']==="\u0063\u006C\u006F\u0073\u0065\u0064"){closePeer(otherId);removeTile(otherId);}};_0xd446c['\u0063\u0068\u0069\u006C\u0064'](_0xg_0xbbf)['\u006F\u006E']("dedda_dlihc".split("").reverse().join(""),snap=>{const data=snap['\u0076\u0061\u006C']();if(_0xd467dc['\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0052\u0065\u006D\u006F\u0074\u0065\u0044\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E'])_0xd467dc['\u0061\u0064\u0064\u0049\u0063\u0065\u0043\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065'](new RTCIceCandidate(data))['\u0063\u0061\u0074\u0063\u0068'](console['\u0065\u0072\u0072\u006F\u0072']);else _0x51e['\u0070\u0065\u006E\u0064\u0069\u006E\u0067\u0043\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065\u0073']['\u0070\u0075\u0073\u0068'](data);});function _0x28ece(){_0x51e['\u0070\u0065\u006E\u0064\u0069\u006E\u0067\u0043\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065\u0073']['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](c=>_0xd467dc['\u0061\u0064\u0064\u0049\u0063\u0065\u0043\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065'](new RTCIceCandidate(c))['\u0063\u0061\u0074\u0063\u0068'](console['\u0065\u0072\u0072\u006F\u0072']));_0x51e['\u0070\u0065\u006E\u0064\u0069\u006E\u0067\u0043\u0061\u006E\u0064\u0069\u0064\u0061\u0074\u0065\u0073']=[];}if(isCaller){_0xd446c['\u006F\u006E\u0044\u0069\u0073\u0063\u006F\u006E\u006E\u0065\u0063\u0074']()['\u0072\u0065\u006D\u006F\u0076\u0065']();_0xd467dc['\u0063\u0072\u0065\u0061\u0074\u0065\u004F\u0066\u0066\u0065\u0072']()['\u0074\u0068\u0065\u006E'](offer=>_0xd467dc['\u0073\u0065\u0074\u004C\u006F\u0063\u0061\u006C\u0044\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E'](offer)['\u0074\u0068\u0065\u006E'](()=>offer))['\u0074\u0068\u0065\u006E'](offer=>_0xd446c['\u0073\u0065\u0074']({'\u0063\u0061\u006C\u006C\u0065\u0072\u0049\u0064':myId,'\u0063\u0061\u006C\u006C\u0065\u0065\u0049\u0064':otherId,'\u006F\u0066\u0066\u0065\u0072':{"type":offer['\u0074\u0079\u0070\u0065'],'\u0073\u0064\u0070':offer['\u0073\u0064\u0070']}}));_0xd446c['\u0063\u0068\u0069\u006C\u0064']("\u0061\u006E\u0073\u0077\u0065\u0072")['\u006F\u006E']("eulav".split("").reverse().join(""),snap=>{let _0xa8489c;const data=snap['\u0076\u0061\u006C']();_0xa8489c=(255471^255463)+(890342^890339);if(data&&!_0xd467dc['\u0063\u0075\u0072\u0072\u0065\u006E\u0074\u0052\u0065\u006D\u006F\u0074\u0065\u0044\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E']){_0xd467dc['\u0073\u0065\u0074\u0052\u0065\u006D\u006F\u0074\u0065\u0044\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E'](new RTCSessionDescription(data))['\u0074\u0068\u0065\u006E'](_0x28ece);}});}else{_0xd467dc['\u0073\u0065\u0074\u0052\u0065\u006D\u006F\u0074\u0065\u0044\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E'](new RTCSessionDescription(existingPairVal['\u006F\u0066\u0066\u0065\u0072']))['\u0074\u0068\u0065\u006E'](_0x28ece)['\u0074\u0068\u0065\u006E'](()=>_0xd467dc['\u0063\u0072\u0065\u0061\u0074\u0065\u0041\u006E\u0073\u0077\u0065\u0072']())['\u0074\u0068\u0065\u006E'](answer=>_0xd467dc['\u0073\u0065\u0074\u004C\u006F\u0063\u0061\u006C\u0044\u0065\u0073\u0063\u0072\u0069\u0070\u0074\u0069\u006F\u006E'](answer)['\u0074\u0068\u0065\u006E'](()=>answer))['\u0074\u0068\u0065\u006E'](answer=>_0xd446c['\u0063\u0068\u0069\u006C\u0064']("rewsna".split("").reverse().join(""))['\u0073\u0065\u0074']({'\u0074\u0079\u0070\u0065':answer['\u0074\u0079\u0070\u0065'],'\u0073\u0064\u0070':answer['\u0073\u0064\u0070']}));}}function closePeer(otherId,_0x5f24cb){const _0xa2_0x12f=peers[otherId];_0x5f24cb=(453714^453723)+(537278^537277);if(!_0xa2_0x12f)return;try{pairsRef['\u0063\u0068\u0069\u006C\u0064'](_0xa2_0x12f['\u0070\u0061\u0069\u0072\u004B\u0065\u0079'])['\u006F\u0066\u0066']();}catch(e){}try{_0xa2_0x12f['\u0070\u0063']['\u0063\u006C\u006F\u0073\u0065']();}catch(e){}delete peers[otherId];}function appendSystemMessage(text){var _0x685dd=(493602^493601)+(223234^223242);const _0xe80fac=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0x685dd=(622160^622163)+(233617^233625);_0xe80fac['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="sys gsm".split("").reverse().join("");_0xe80fac['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=text;chatMessages['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xe80fac);chatMessages['\u0073\u0063\u0072\u006F\u006C\u006C\u0054\u006F\u0070']=chatMessages['\u0073\u0063\u0072\u006F\u006C\u006C\u0048\u0065\u0069\u0067\u0068\u0074'];}function appendMessage(data,_0xb2542f){const _0x24ded=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0xb2542f='\u0065\u0063\u0061\u006A\u006B\u006F';const _0x2762ac=data['\u0066\u0072\u006F\u006D']===myId;_0x24ded['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="\u006D\u0073\u0067\u0020"+(_0x2762ac?"\u006D\u0065":"meht".split("").reverse().join(""));var _0x72384f=(773174^773182)+(840928^840931);const _0xa1d2ee=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("\u0064\u0069\u0076");_0x72384f='\u006E\u006B\u0068\u0063\u006F\u006C';_0xa1d2ee['\u0063\u006C\u0061\u0073\u0073\u004E\u0061\u006D\u0065']="morf-gsm".split("").reverse().join("");_0xa1d2ee['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=_0x2762ac?"uoY".split("").reverse().join(""):shortLabel(data['\u0066\u0072\u006F\u006D']);var _0x297ef=(215634^215639)+(688185^688191);const _0x28afe=document['\u0063\u0072\u0065\u0061\u0074\u0065\u0045\u006C\u0065\u006D\u0065\u006E\u0074']("vid".split("").reverse().join(""));_0x297ef=(778459^778460)+(145118^145117);_0x28afe['\u0074\u0065\u0078\u0074\u0043\u006F\u006E\u0074\u0065\u006E\u0074']=data['\u0074\u0065\u0078\u0074'];_0x24ded['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0xa1d2ee);_0x24ded['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x28afe);chatMessages['\u0061\u0070\u0070\u0065\u006E\u0064\u0043\u0068\u0069\u006C\u0064'](_0x24ded);chatMessages['\u0073\u0063\u0072\u006F\u006C\u006C\u0054\u006F\u0070']=chatMessages['\u0073\u0063\u0072\u006F\u006C\u006C\u0048\u0065\u0069\u0067\u0068\u0074'];}chatToggleBtn['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>chatPanel['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0074\u006F\u0067\u0067\u006C\u0065']("despalloc".split("").reverse().join(""));chatPanelClose['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>chatPanel['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0063\u006F\u006C\u006C\u0061\u0070\u0073\u0065\u0064");chatSendBtn['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=sendChatMessage;chatInput['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("nwodyek".split("").reverse().join(""),e=>{if(e['\u006B\u0065\u0079']==="retnE".split("").reverse().join(""))sendChatMessage();});function sendChatMessage(){const _0x873bf=chatInput['\u0076\u0061\u006C\u0075\u0065']['\u0074\u0072\u0069\u006D']();if(!_0x873bf||!messagesRef)return;messagesRef['\u0070\u0075\u0073\u0068']({'\u0066\u0072\u006F\u006D':myId,'\u0074\u0065\u0078\u0074':_0x873bf,"ts":Date['\u006E\u006F\u0077']()});chatInput['\u0076\u0061\u006C\u0075\u0065']='';}copyCodeBtn['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{if(!roomCode)return;navigator['\u0063\u006C\u0069\u0070\u0062\u006F\u0061\u0072\u0064']['\u0077\u0072\u0069\u0074\u0065\u0054\u0065\u0078\u0074'](roomCode)['\u0074\u0068\u0065\u006E'](()=>{appendSystemMessage(".draobpilc ot deipoc edoc mooR".split("").reverse().join(""));})['\u0063\u0061\u0074\u0063\u0068'](()=>{});};micBtn['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{if(!localStream)return;micOn=!micOn;localStream['\u0067\u0065\u0074\u0041\u0075\u0064\u0069\u006F\u0054\u0072\u0061\u0063\u006B\u0073']()['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](t=>t['\u0065\u006E\u0061\u0062\u006C\u0065\u0064']=micOn);micBtn['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0074\u006F\u0067\u0067\u006C\u0065']("\u006F\u0066\u0066",!micOn);var _0xag072c=(553517^553509)+(318685^318684);const t=tileEls[myId];_0xag072c=(342286^342284)+(620764^620756);if(t)t['\u0074\u0061\u0067']['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0074\u006F\u0067\u0067\u006C\u0065']("\u0069\u0073\u002D\u006D\u0075\u0074\u0065\u0064",!micOn);};camBtn['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{if(!localStream)return;camOn=!camOn;localStream['\u0067\u0065\u0074\u0056\u0069\u0064\u0065\u006F\u0054\u0072\u0061\u0063\u006B\u0073']()['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](t=>t['\u0065\u006E\u0061\u0062\u006C\u0065\u0064']=camOn);camBtn['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0074\u006F\u0067\u0067\u006C\u0065']("\u006F\u0066\u0066",!camOn);};leaveBtn['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>leaveRoom();reportBtn['\u006F\u006E\u0063\u006C\u0069\u0063\u006B']=()=>{const otherIds=Object['\u006B\u0065\u0079\u0073'](participants);if(otherIds['\u006C\u0065\u006E\u0067\u0074\u0068']){db['\u0072\u0065\u0066']("\u0072\u0065\u0070\u006F\u0072\u0074\u0073")['\u0070\u0075\u0073\u0068']({"reporter":myId,'\u0072\u006F\u006F\u006D':roomCode,'\u0070\u0061\u0072\u0074\u0069\u0063\u0069\u0070\u0061\u006E\u0074\u0073':otherIds,'\u0074\u0073':Date['\u006E\u006F\u0077']()});}appendSystemMessage("\u0052\u0065\u0070\u006F\u0072\u0074\u0020\u0073\u0075\u0062\u006D\u0069\u0074\u0074\u0065\u0064\u002E\u0020\u0041\u0020\u006D\u006F\u0064\u0065\u0072\u0061\u0074\u006F\u0072\u0020\u0063\u0061\u006E\u0020\u0072\u0065\u0076\u0069\u0065\u0077\u0020\u0074\u0068\u0069\u0073\u0020\u0072\u006F\u006F\u006D\u002E");};function leaveRoom(){const _0xb14b=Object['\u006B\u0065\u0079\u0073'](participants)['\u006C\u0065\u006E\u0067\u0074\u0068']===(448413^448413);Object['\u006B\u0065\u0079\u0073'](peers)['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](id=>closePeer(id));Object['\u006B\u0065\u0079\u0073'](tileEls)['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](id=>removeTile(id));if(participantsRef){participantsRef['\u006F\u0066\u0066']();participantsRef['\u0063\u0068\u0069\u006C\u0064'](myId)['\u0072\u0065\u006D\u006F\u0076\u0065']();}if(pairsRef)pairsRef['\u006F\u0066\u0066']();if(messagesRef)messagesRef['\u006F\u0066\u0066']();if(localStream){localStream['\u0067\u0065\u0074\u0054\u0072\u0061\u0063\u006B\u0073']()['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](t=>t['\u0073\u0074\u006F\u0070']());localStream=null;}if(_0xb14b&&roomRef){roomRef['\u006F\u006E\u0044\u0069\u0073\u0063\u006F\u006E\u006E\u0065\u0063\u0074']()['\u0063\u0061\u006E\u0063\u0065\u006C']();roomRef['\u0072\u0065\u006D\u006F\u0076\u0065']();}Object['\u006B\u0065\u0079\u0073'](participants)['\u0066\u006F\u0072\u0045\u0061\u0063\u0068'](k=>delete participants[k]);roomCode=null;roomRef=null;participantsRef=null;pairsRef=null;messagesRef=null;chatPanel['\u0063\u006C\u0061\u0073\u0073\u004C\u0069\u0073\u0074']['\u0061\u0064\u0064']("\u0063\u006F\u006C\u006C\u0061\u0070\u0073\u0065\u0064");joinCodeInput['\u0076\u0061\u006C\u0075\u0065']='';meetingScreen['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="\u006E\u006F\u006E\u0065";landing['\u0073\u0074\u0079\u006C\u0065']['\u0064\u0069\u0073\u0070\u006C\u0061\u0079']="xelf".split("").reverse().join("");}window['\u0061\u0064\u0064\u0045\u0076\u0065\u006E\u0074\u004C\u0069\u0073\u0074\u0065\u006E\u0065\u0072']("\u0062\u0065\u0066\u006F\u0072\u0065\u0075\u006E\u006C\u006F\u0061\u0064",()=>{if(participantsRef)participantsRef['\u0063\u0068\u0069\u006C\u0064'](myId)['\u0072\u0065\u006D\u006F\u0076\u0065']();});
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+const MAX_PARTICIPANTS = 4;
+const myId = (crypto.randomUUID ? crypto.randomUUID() : 'u-' + Date.now() + '-' + Math.random().toString(16).slice(2));
+
+/* =========================================================================
+   STATE
+   ========================================================================= */
+let localStream = null;
+let roomCode = null;
+let roomRef = null;
+let participantsRef = null;
+let pairsRef = null;
+let messagesRef = null;
+let micOn = true, camOn = true;
+let joinedAt = 0;
+
+const peers = {};        // remoteId -> { pc, pendingCandidates: [], pairKey, isCaller }
+const participants = {}; // remoteId -> { joinedAt, micOn, camOn }  (everyone EXCEPT me)
+const tileEls = {};      // id -> { wrap, video, tag }
+
+const rtcConfig = {
+  iceServers: [
+    { urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] },
+    // TURN relay â€” needed when a participant is behind a symmetric NAT,
+    // CGNAT (common on mobile carriers), or a restrictive firewall, since
+    // STUN alone can't establish a path for those. Free/rate-limited Open
+    // Relay Project service; swap in your own TURN credentials (Twilio,
+    // Xirsys, Cloudflare, or self-hosted coturn) for real-world traffic.
+    { urls: 'turn:openrelay.metered.ca:80', username: 'openrelayproject', credential: 'openrelayproject' },
+    { urls: 'turn:openrelay.metered.ca:443', username: 'openrelayproject', credential: 'openrelayproject' },
+    { urls: 'turn:openrelay.metered.ca:443?transport=tcp', username: 'openrelayproject', credential: 'openrelayproject' }
+  ]
+};
+
+/* =========================================================================
+   DOM
+   ========================================================================= */
+const landing = document.getElementById('landing');
+const meetingScreen = document.getElementById('meetingScreen');
+const camNote = document.getElementById('camNote');
+
+const tabCreate = document.getElementById('tabCreate');
+const tabJoin = document.getElementById('tabJoin');
+const panelCreate = document.getElementById('panelCreate');
+const panelJoin = document.getElementById('panelJoin');
+const createBtn = document.getElementById('createBtn');
+const joinBtn = document.getElementById('joinBtn');
+const joinCodeInput = document.getElementById('joinCodeInput');
+const createError = document.getElementById('createError');
+const joinError = document.getElementById('joinError');
+const publicRoomToggle = document.getElementById('publicRoomToggle');
+const publicRoomFields = document.getElementById('publicRoomFields');
+const roomDescription = document.getElementById('roomDescription');
+
+const tileGrid = document.getElementById('tileGrid');
+const waitingBanner = document.getElementById('waitingBanner');
+const waitingBannerText = document.getElementById('waitingBannerText');
+const statusText = document.getElementById('statusText');
+const statusLabel = document.getElementById('statusLabel');
+const roomCodeChip = document.getElementById('roomCodeChip');
+const copyCodeBtn = document.getElementById('copyCodeBtn');
+const participantCount = document.getElementById('participantCount');
+
+const micBtn = document.getElementById('micBtn');
+const camBtn = document.getElementById('camBtn');
+const leaveBtn = document.getElementById('leaveBtn');
+const reportBtn = document.getElementById('reportBtn');
+
+const chatToggleBtn = document.getElementById('chatToggleBtn');
+const chatPanel = document.getElementById('chatPanel');
+const chatPanelClose = document.getElementById('chatPanelClose');
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const chatSendBtn = document.getElementById('chatSendBtn');
+
+const onlineCountLanding = document.getElementById('onlineCountLanding');
+
+/* =========================================================================
+   ONLINE PRESENCE COUNTER (site-wide, just a live-ness signal)
+   ========================================================================= */
+const onlineRef = db.ref('onlineUsers');
+const myOnlineRef = onlineRef.push(true);
+myOnlineRef.onDisconnect().remove();
+onlineRef.on('value', snap => { onlineCountLanding.textContent = snap.numChildren(); });
+
+/* =========================================================================
+   LANDING â€” tabs
+   ========================================================================= */
+tabCreate.onclick = () => { tabCreate.classList.add('active'); tabJoin.classList.remove('active'); panelCreate.classList.add('active'); panelJoin.classList.remove('active'); };
+tabJoin.onclick = () => { tabJoin.classList.add('active'); tabCreate.classList.remove('active'); panelJoin.classList.add('active'); panelCreate.classList.remove('active'); };
+
+publicRoomToggle.onchange = () => {
+  publicRoomFields.hidden = !publicRoomToggle.checked;
+  if (!publicRoomToggle.checked) roomDescription.value = '';
+  roomDescription.removeAttribute('aria-invalid');
+};
+publicRoomFields.hidden = true;
+
+roomDescription.addEventListener('input', () => {
+  if (roomDescription.value.trim()) roomDescription.removeAttribute('aria-invalid');
+});
+
+const requestedRoom = new URLSearchParams(window.location.search).get('room');
+if (requestedRoom) {
+  const normalizedRoom = requestedRoom.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+  if (normalizedRoom.length === 6) {
+    tabJoin.click();
+    joinCodeInput.value = normalizedRoom;
+  }
+}
+
+joinCodeInput.addEventListener('input', () => {
+  joinCodeInput.value = joinCodeInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+});
+
+function showError(el, msg){ el.textContent = msg; el.classList.add('show'); }
+function clearError(el){ el.textContent = ''; el.classList.remove('show'); }
+
+/* =========================================================================
+   ROOM CODE GENERATION
+   ========================================================================= */
+const CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no 0/O/1/I to avoid ambiguity
+function randomCode(){
+  let c = '';
+  for (let i = 0; i < 6; i++) c += CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
+  return c;
+}
+
+async function generateUniqueCode(){
+  for (let attempt = 0; attempt < 8; attempt++){
+    const code = randomCode();
+    const snap = await db.ref('rooms/' + code + '/meta').once('value');
+    if (!snap.exists()) return code;
+  }
+  throw new Error('Could not allocate a room code, please try again.');
+}
+
+/* =========================================================================
+   MEDIA + ENTRY POINTS
+   ========================================================================= */
+async function ensureMedia(){
+  if (localStream) return localStream;
+  localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+  return localStream;
+}
+
+createBtn.onclick = async () => {
+  clearError(createError);
+  createBtn.disabled = true;
+  camNote.textContent = 'Requesting camera & microphone';
+  try{
+    const isPublic = publicRoomToggle.checked;
+    const description = roomDescription.value.trim();
+    if (isPublic && !description){
+      roomDescription.setAttribute('aria-invalid', 'true');
+      showError(createError, 'Add a description for public rooms.');
+      return;
+    }
+    await ensureMedia();
+    const code = await generateUniqueCode();
+    await db.ref('rooms/' + code + '/meta').set({
+      createdAt: Date.now(),
+      visibility: isPublic ? 'public' : 'private',
+      description: isPublic ? description : ''
+    });
+    await enterRoom(code);
+  }catch(err){
+    console.error(err);
+    showError(createError, err && err.name === 'NotAllowedError'
+      ? 'Camera/microphone access is required. Please allow it and try again.'
+      : (err.message || 'Something went wrong creating the room.'));
+  }finally{
+    createBtn.disabled = false;
+    camNote.textContent = "We'll ask for camera & microphone access to connect you.";
+  }
+};
+
+joinBtn.onclick = async () => {
+  clearError(joinError);
+  const code = joinCodeInput.value.trim().toUpperCase();
+  if (code.length !== 6){ showError(joinError, 'Enter the 6-character room code.'); return; }
+  joinBtn.disabled = true;
+  camNote.textContent = 'Requesting camera & microphone';
+  try{
+    const metaSnap = await db.ref('rooms/' + code + '/meta').once('value');
+    if (!metaSnap.exists()){ showError(joinError, "That room code doesn't exist."); return; }
+    const partsSnap = await db.ref('rooms/' + code + '/participants').once('value');
+    if (partsSnap.numChildren() >= MAX_PARTICIPANTS){ showError(joinError, 'That room is full (max 4 people).'); return; }
+    await ensureMedia();
+    await enterRoom(code);
+  }catch(err){
+    console.error(err);
+    showError(joinError, err && err.name === 'NotAllowedError'
+      ? 'Camera/microphone access is required. Please allow it and try again.'
+      : (err.message || 'Something went wrong joining the room.'));
+  }finally{
+    joinBtn.disabled = false;
+    camNote.textContent = "We'll ask for camera & microphone access to connect you.";
+  }
+};
+
+/* =========================================================================
+   ENTER ROOM
+   ========================================================================= */
+async function enterRoom(code){
+  roomCode = code;
+  joinedAt = Date.now();
+  roomRef = db.ref('rooms/' + code);
+  participantsRef = roomRef.child('participants');
+  pairsRef = roomRef.child('pairs');
+  messagesRef = roomRef.child('messages');
+
+  landing.style.display = 'none';
+  meetingScreen.style.display = 'flex';
+  roomCodeChip.textContent = code;
+  chatMessages.innerHTML = '';
+  tileGrid.innerHTML = '';
+  Object.keys(tileEls).forEach(k => delete tileEls[k]);
+  setStatus('Waiting for others to join', false);
+
+  addTile(myId, 'You', true, localStream);
+
+  // Read who is already here BEFORE registering myself, so I know exactly
+  // who I need to initiate a connection to (I connect out to everyone
+  // already present; every future joiner will do the same to me).
+  const existingSnap = await participantsRef.once('value');
+  const existingIds = [];
+  existingSnap.forEach(child => { existingIds.push(child.key); return false; });
+
+  const myRef = participantsRef.child(myId);
+  await myRef.set({ joinedAt, micOn, camOn });
+  myRef.onDisconnect().remove();
+
+  existingIds.forEach(otherId => startConnection(otherId, true));
+
+  // Passive side: watch for pairs where I'm the callee (someone joining
+  // later than me will initiate to me this way).
+  pairsRef.on('child_added', snap => {
+    const val = snap.val();
+    if (!val || val.calleeId !== myId) return;
+    if (peers[val.callerId]) return; // already handling this pair
+    startConnection(val.callerId, false, snap.key, val);
+  });
+
+  participantsRef.on('child_added', snap => {
+    const id = snap.key;
+    if (id === myId) return;
+    participants[id] = snap.val();
+    applyParticipantState(id);
+    updateParticipantCount();
+    updateAloneGuard();
+  });
+  participantsRef.on('child_changed', snap => {
+    const id = snap.key;
+    if (id === myId) return;
+    participants[id] = snap.val();
+    applyParticipantState(id);
+  });
+  participantsRef.on('child_removed', snap => {
+    const id = snap.key;
+    if (id === myId) return;
+    delete participants[id];
+    closePeer(id);
+    removeTile(id);
+    appendSystemMessage('A participant has left the room.');
+    updateParticipantCount();
+    updateAloneGuard();
+  });
+  participantsRef.on('value', snap => {
+    if (!snap.exists()) removeRoomIfEmpty();
+  });
+
+  messagesRef.on('child_added', snap => appendMessage(snap.val()));
+
+  updateParticipantCount();
+  updateAloneGuard();
+}
+
+/* Room auto-close: whenever I am the only person left in the room, arm a
+   deletion of the WHOLE room (meta, participants, pairs, messages) that
+   fires automatically if my connection drops without a clean "Leave" â€”
+   e.g. the tab crashes or the network dies. As soon as anyone else joins,
+   the arm is cancelled so their presence doesn't get wiped out by my
+   disconnect. Whichever participant is currently alone always holds this
+   guard, so the room is reliably cleaned up the moment it's truly empty. */
+function updateAloneGuard(){
+  if (!roomRef) return;
+  const alone = Object.keys(participants).length === 0;
+  if (alone) roomRef.onDisconnect().remove();
+  else roomRef.onDisconnect().cancel();
+}
+
+function removeRoomIfEmpty(){
+  if (!roomRef || !participantsRef) return;
+  participantsRef.once('value').then(snap => {
+    if (snap.exists()) return;
+    roomRef.onDisconnect().cancel();
+    return roomRef.remove();
+  }).catch(console.error);
+}
+
+function updateParticipantCount(){
+  const n = Object.keys(participants).length + 1;
+  participantCount.textContent = n;
+  setStatus(n > 1 ? 'Connected' : 'Waiting for others to join', n > 1);
+  waitingBanner.style.display = n >= 2 ? 'none' : 'flex';
+  waitingBannerText.textContent = 'Share the room code "' + roomCode + ' waiting for others';
+}
+function setStatus(text, live){
+  statusLabel.textContent = text;
+  statusText.classList.toggle('live', !!live);
+}
+
+function applyParticipantState(id){
+  const tile = tileEls[id];
+  const state = participants[id];
+  if (!tile || !state) return;
+  tile.tag.classList.toggle('is-muted', state.micOn === false);
+  tile.wrap.classList.toggle('camera-off', state.camOn === false);
+}
+
+/* =========================================================================
+   TILES
+   ========================================================================= */
+function addTile(id, label, isLocal, stream){
+  const wrap = document.createElement('div');
+  wrap.className = 'tile' + (isLocal ? ' local' : '');
+  wrap.dataset.id = id;
+
+  const video = document.createElement('video');
+  video.autoplay = true; video.playsInline = true;
+  if (isLocal) video.muted = true;
+  if (stream) video.srcObject = stream;
+
+  const tag = document.createElement('div');
+  tag.className = 'tile-label';
+  tag.innerHTML = '<span class="name">' + label + '</span><span class="mic-off">&#128263;</span>';
+
+  wrap.appendChild(video);
+  wrap.appendChild(tag);
+  tileGrid.appendChild(wrap);
+  tileEls[id] = { wrap, video, tag };
+  if (id === myId){
+    tag.classList.toggle('is-muted', !micOn);
+    wrap.classList.toggle('camera-off', !camOn);
+  } else {
+    applyParticipantState(id);
+  }
+  relayoutGrid();
+  return tileEls[id];
+}
+function removeTile(id){
+  const t = tileEls[id];
+  if (t){ t.wrap.remove(); delete tileEls[id]; }
+  relayoutGrid();
+}
+function relayoutGrid(){
+  const n = Math.max(1, Math.min(4, Object.keys(tileEls).length));
+  tileGrid.classList.remove('n1', 'n2', 'n3', 'n4');
+  tileGrid.classList.add('n' + n);
+}
+function shortLabel(id){ return id === myId ? 'You' : ('Guest-' + id.slice(0, 4)); }
+
+/* =========================================================================
+   WEBRTC â€” one RTCPeerConnection per remote participant (full mesh)
+   -------------------------------------------------------------------------
+   pairKey is the two participant ids sorted and joined, so both sides
+   compute the same database path independently. Whichever side already
+   existed in the room when the other joined always becomes the "callee";
+   the newcomer is always the "caller" who creates the offer.
+   ========================================================================= */
+function pairKeyFor(a, b){ return [a, b].sort().join('__'); }
+
+function startConnection(otherId, isCaller, existingPairKey, existingPairVal){
+  const pairKey = existingPairKey || pairKeyFor(myId, otherId);
+  const pairRef = pairsRef.child(pairKey);
+  const pc = new RTCPeerConnection(rtcConfig);
+  const entry = { pc, pendingCandidates: [], pairKey, isCaller };
+  peers[otherId] = entry;
+
+  localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+
+  pc.ontrack = e => {
+    const tile = tileEls[otherId] || addTile(otherId, shortLabel(otherId), false, null);
+    if (tile.video.srcObject !== e.streams[0]) tile.video.srcObject = e.streams[0];
+  };
+
+  const myCandidatesField = isCaller ? 'callerCandidates' : 'calleeCandidates';
+  const theirCandidatesField = isCaller ? 'calleeCandidates' : 'callerCandidates';
+
+  pc.onicecandidate = e => { if (e.candidate) pairRef.child(myCandidatesField).push(e.candidate.toJSON()); };
+  pc.oniceconnectionstatechange = () => {
+    if (pc.iceConnectionState === 'failed' || pc.iceConnectionState === 'closed'){
+      closePeer(otherId);
+      removeTile(otherId);
+    }
+  };
+
+  pairRef.child(theirCandidatesField).on('child_added', snap => {
+    const data = snap.val();
+    if (pc.currentRemoteDescription) pc.addIceCandidate(new RTCIceCandidate(data)).catch(console.error);
+    else entry.pendingCandidates.push(data);
+  });
+
+  function flushPending(){
+    entry.pendingCandidates.forEach(c => pc.addIceCandidate(new RTCIceCandidate(c)).catch(console.error));
+    entry.pendingCandidates = [];
+  }
+
+  if (isCaller){
+    pairRef.onDisconnect().remove();
+    pc.createOffer()
+      .then(offer => pc.setLocalDescription(offer).then(() => offer))
+      .then(offer => pairRef.set({ callerId: myId, calleeId: otherId, offer: { type: offer.type, sdp: offer.sdp } }));
+
+    pairRef.child('answer').on('value', snap => {
+      const data = snap.val();
+      if (data && !pc.currentRemoteDescription){
+        pc.setRemoteDescription(new RTCSessionDescription(data)).then(flushPending);
+      }
+    });
+  } else {
+    pc.setRemoteDescription(new RTCSessionDescription(existingPairVal.offer))
+      .then(flushPending)
+      .then(() => pc.createAnswer())
+      .then(answer => pc.setLocalDescription(answer).then(() => answer))
+      .then(answer => pairRef.child('answer').set({ type: answer.type, sdp: answer.sdp }));
+  }
+}
+
+function closePeer(otherId){
+  const entry = peers[otherId];
+  if (!entry) return;
+  try{ pairsRef.child(entry.pairKey).off(); }catch(e){}
+  try{ entry.pc.close(); }catch(e){}
+  delete peers[otherId];
+}
+
+/* =========================================================================
+   CHAT
+   ========================================================================= */
+function appendSystemMessage(text){
+  const div = document.createElement('div');
+  div.className = 'msg sys';
+  div.textContent = text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function appendMessage(data){
+  const div = document.createElement('div');
+  const mine = data.from === myId;
+  div.className = 'msg ' + (mine ? 'me' : 'them');
+  const fromEl = document.createElement('div');
+  fromEl.className = 'msg-from';
+  fromEl.textContent = mine ? 'You' : shortLabel(data.from);
+  const textEl = document.createElement('div');
+  textEl.textContent = data.text;
+  div.appendChild(fromEl);
+  div.appendChild(textEl);
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+chatToggleBtn.onclick = () => chatPanel.classList.toggle('collapsed');
+chatPanelClose.onclick = () => chatPanel.classList.add('collapsed');
+chatSendBtn.onclick = sendChatMessage;
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMessage(); });
+function sendChatMessage(){
+  const text = chatInput.value.trim();
+  if (!text || !messagesRef) return;
+  messagesRef.push({ from: myId, text, ts: Date.now() });
+  chatInput.value = '';
+}
+
+/* =========================================================================
+   CONTROLS
+   ========================================================================= */
+copyCodeBtn.onclick = () => {
+  if (!roomCode) return;
+  navigator.clipboard.writeText(roomCode).then(() => {
+    appendSystemMessage('Room code copied to clipboard.');
+  }).catch(() => {});
+};
+
+micBtn.onclick = () => {
+  if (!localStream) return;
+  micOn = !micOn;
+  localStream.getAudioTracks().forEach(t => t.enabled = micOn);
+  micBtn.classList.toggle('off', !micOn);
+  const t = tileEls[myId];
+  if (t) t.tag.classList.toggle('is-muted', !micOn);
+  if (participantsRef) participantsRef.child(myId).update({ micOn });
+};
+camBtn.onclick = () => {
+  if (!localStream) return;
+  camOn = !camOn;
+  localStream.getVideoTracks().forEach(t => t.enabled = camOn);
+  camBtn.classList.toggle('off', !camOn);
+  const t = tileEls[myId];
+  if (t) t.wrap.classList.toggle('camera-off', !camOn);
+  if (participantsRef) participantsRef.child(myId).update({ camOn });
+};
+
+leaveBtn.onclick = () => leaveRoom();
+
+reportBtn.onclick = () => {
+  const otherIds = Object.keys(participants);
+  if (otherIds.length){
+    db.ref('reports').push({ reporter: myId, room: roomCode, participants: otherIds, ts: Date.now() });
+  }
+  appendSystemMessage('Report submitted. A moderator can review this room.');
+};
+
+function leaveRoom(){
+  const wasAlone = Object.keys(participants).length === 0;
+
+  Object.keys(peers).forEach(id => closePeer(id));
+  Object.keys(tileEls).forEach(id => removeTile(id));
+  if (participantsRef){ participantsRef.off(); participantsRef.child(myId).remove(); }
+  if (pairsRef) pairsRef.off();
+  if (messagesRef) messagesRef.off();
+  if (localStream){ localStream.getTracks().forEach(t => t.stop()); localStream = null; }
+
+  // I was the last one in the room â€” close it out entirely so no empty
+  // room data lingers in the database.
+  if (wasAlone && roomRef){
+    roomRef.onDisconnect().cancel();
+    roomRef.remove();
+  }
+
+  Object.keys(participants).forEach(k => delete participants[k]);
+  roomCode = null; roomRef = null; participantsRef = null; pairsRef = null; messagesRef = null;
+  chatPanel.classList.add('collapsed');
+  joinCodeInput.value = '';
+
+  meetingScreen.style.display = 'none';
+  landing.style.display = 'flex';
+}
+
+/* Best-effort cleanup if the tab is closed outright. */
+window.addEventListener('beforeunload', () => {
+  if (participantsRef) participantsRef.child(myId).remove();
+});
